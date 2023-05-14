@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" style=" margin: 0px;height: 100%;font-family: 'Times New Roman', Times, serif;background-image: url('arka.jpg');">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="film;oyun">
+    <meta name="author" content="ÖZLEM ARSLAN">
+    <title> Filmse </title>
+      <script>
+        window.onload=function(){ // sayfanın açıldığı anda fonksiyonun çağırılması için window.onload kullanılır.
+            tuval=document.getElementById("canvas1"); // canvas etiketinin id alınır.
+            ciz=tuval.getContext("2d"); // canvas da 2 boyutlu çizim yapalacağı belirtildi.
+            cingene=document.getElementById("cingene"); // canvas içinde kullanılacak olan görselin id alınır.
+            sid=document.getElementById("sid"); // canvas içinde kullanılacak olan görselin id alınır.
+            // Sid animasyon karakterinin görselinin hareket etmesi için başlangıç koordinatları belirlenir.
+            x=30; 
+            y=30;
+            // hareket esnasında koordinatların artışı mikatarı ayarlanır.
+            x_art=10; 
+            y_art=-10;
+            function ziplama(){ // Sid için hareket fonksiyonu oluşturulur.
+                if(y>10){ // ekranın alt kısmında görselin kayıp gitmemesi için y eksenin kontrol edilmesi gerekli.
+                   // koordinatlarda ki hareket boyunca sahip olacağı hız belirlenir.
+                    x*=1.15;
+                    y*1.15;
+                }
+                // hareket esnasında görüntünün arkasında iz bırakmasını önlemek için clearRect() fonksiyonu kullanılır.
+                ciz.clearRect(0, 0, 300, 300); 
+                y_art+=1; // yer çekimi etkisi gibi düşünülerek y ekseninde ki hareket ayarlanır.
+                ciz.drawImage(sid,0,0,550,700,x,y,200,200); // canvas içinde resim kullanabilmek için drawImage() fonksiyonu kullanılır. 
+                //Parametreler olarak çizdirilmek istenen resmin id ,çizme işlemine resmin hangi koordinatlarında başlanağaı, genişliği ,yüksekliği ve canvas içinde aynı katagoride boyutlandırma yapılır.
+                x+=x_art;
+                y+=y_art;
+            }
+            setInterval(ziplama,25000); // ziplama fonksiyonun her 25 saniye de bir çağırması için setInterval() fonksiyonu kullanılır.
+            // oyun sayfası ilk açıldığı zaman canvasın içinde Pasifik Savaşı filminde yer alan Çingene Robatu için parça parça bir görsel çıkar.
+            // bu resim 25 saniye sonra kaldırılır ve yerine Buz Devri filmi için Sid karakteri yer alır.
+            ciz.drawImage(cingene,100,100,100,100,0,0,100,100); // Çingene Robotunun resmi canvas içine çizdirilir.
+            ciz.drawImage(cingene,500,150,100,100,210,0,100,100);
+            ciz.drawImage(cingene,270,110,100,100,105,0,100,100);
+            ciz.drawImage(cingene,180,50,100,100,0,105,100,100);
+            ciz.drawImage(cingene,275,10,100,100,0,210,100,100);
+            ciz.drawImage(cingene,500,300,100,100,210,210,100,100);
+            ciz.drawImage(cingene,0,0,100,100,210,105,100,100);
+            ciz.drawImage(cingene,370,295,100,100,105,105,100,100);
+            ciz.drawImage(cingene,560,210,100,100,105,210,100,100);   
+        } 
+    </script>
+    <style>
+       /*başlama butonu için gerekli olan stiller atanır.Bu işemi butondan class oluşturarak yapılır.*/
+         #baslama_butonu{ 
+            width: 40%; /* genişliği*/
+            height: 10%; /* yüksekliği*/
+            background-color: rgb(120, 231, 255); /* arka plan rengi*/
+            font-size: 1em; /* kelime büyüklüğü*/
+            border-radius: 50px; /* butonun kenarlarnın oval olması için*/
+            margin-top: 1%;  /* yukarıdan bırakılan boşluk*/
+            margin-left: 30%; /* sol taraftan bırakılan boşluk*/
+         }
+         #baslama_butonu:hover{ /* butonun üstüne mouse geldiği takdirde renk değişiminin gerçekleşmesi için */
+            background-color:ghostwhite;
+            color:rgb(120, 231, 255) ;
+         }
+    </style>
+    <script>
+        // Oyunda sorulacak olan sorulan json formatında oluşturulur. 
+        var soru_dizisi=[ // her soruyu kendi aralarında nesne oluşturacak şeklide ayarlanır. 
+        // toplamda 10 adet soru bulunacağı için 10 adet {}, nesne bulunmaktadır.
+            {   
+                "soru": "1.Filme tıklanıyız ve sesi dinleyiniz. 2013 yılında beyaz perdede yer alan bu filmin ismi nedir? Sol tarafda bu filmde yer alan Çingene Jaeger Robotunun parça parça görseli verilmiştir. Robotun parçasının bulunmadığı kare sayısı kaçtır?",
+                "a": "A) Pasifik Savaşı-2",
+                "b": "B) Teminatör-3",
+                "c": "C) Demir Adam-4",
+                "d": "D) RoboCop-5",
+                "cevap": "A"
+                
+            },
+            {   
+                "soru": "2.Filme tıklanıyız ve sesi dinleyiniz. Duymakta olduğunuz ses hangi animasyon filmine aittir? Sol tarafta hareket etmekte olan film karakterinin ismi nedir?",
+                "a": "A) Cesur Balık-Cordelia",
+                "b": "B) Buz Devri-Sid",
+                "c": "C) Minions-Kevin",
+                "d": "D) 6 Süper Kahraman-Baymax",
+                "cevap": "B"
+                
+            },
+            {   
+                "soru": "3.Filme tıklanıyız ve sesi dinleyiniz. Yazar Rıfat Ilgaz'ın romanından uyarlanan 1974 yapımı Türk komedi filmidir hangisidir?",
+                "a": "A) Eyyvah Eyvah",
+                "b": "B) G.O.R.A.",
+                "c": "C) Hababam Sınıfı",
+                "d": "D) Düğün Dernek",
+                "cevap": "C"
+                
+            },
+            {   
+                "soru": "4.Filme tıklanıyız ve sesi dinleyiniz. Sylvester Stallone tarafından senaryosu yazılan ve başrolde oynadığı ve John G. Avildsen tarafından yönetilen 1976 Akademi Ödüllü Amerikan spor drama filmi hangisidir?",
+                "a": "A) The Blind Side ",
+                "b": "B) Invictus",
+                "c": "C) Any Given Sunday",
+                "d": "D) Rocky",
+                "cevap": "D"
+                
+            },
+            {   
+                "soru":  "5.Filme tıklanıyız ve sesi dinleyiniz. Karanlık bir büyücü olan Lord Voldemort'un ölümsüz olmayı amaçladığı ve serilerini bulunduğu filmin ismi nedir?",
+                "a": "A) Harry Potter",
+                "b": "B) Alacakaranlık",
+                "c": "C) Yüzüklerin Efendisi ",
+                "d": "D) Yıldızlararası",
+                "cevap": "A"
+                
+            },
+            {   
+                "soru": "6.Filme tıklanıyız ve sesi dinleyiniz. Geminin buz dağına çarpması ile büyük bir felakete sebep olan film hangisidir?",
+                "a": "A) Wall-e",
+                "b": "B) Titanic",
+                "c": "C) Sihirbazlar Çetesi",
+                "d": "D) Prestij",
+                "cevap": "B"
+                
+            },
+             {
+
+                "soru":  "7.Filme tıklanıyız ve sesi dinleyiniz.Dinlemekte olduğunuz filmin ismi ve başrol oycunsunun ismi nedir?",
+                "a": "A) Çelik Yumruklar-Hugh Jackman ",
+                "b": "B) Yenilmezler-Robert Downey Jr.",
+                "c": "C) Karayip Korsanlar-Johnny Depp",
+                "d": "D) Ex Machina-Domhnall Gleeson",
+                "cevap": "C"
+                
+            },
+            {
+                "soru":  "8.Filme tıklayınız ve sesi dinleyiniz. Türkiye'nin Güneydoğu'sunda, Irak sınırına yakın bir bölgede görevli bir yüzbaşı ve onun komutasındaki 40 askeri anlatmaktadığı film hangisidir?",
+                "a": "A) Dağ",
+                "b": "B) Kelebeğin Rüyası",
+                "c": "C) İyi ki Varsın Eren",
+                "d": "D) Nefes Vatan Sağolsun",
+                "cevap": "D"
+
+            },
+             {
+
+                "soru":  "9.Filme tıklanıyız ve sesi dinleyiniz.1950 yılında savaşta yer alan Süleyman Astsubay savaş meydanında küçük bir kız çocuğu bulmasını konu edinen filmin ismi nedir?",
+                "a": "A) Ayla",
+                "b": "B) Fetih 1453",
+                "c": "C) 7.Koğuştaki Mucize",
+                "d": "D) Şampiyon",
+                "cevap": "A"
+                
+            },
+            {  
+                "soru":  "10.Filme tıklanıyız ve sesi dinleyiniz. Felçli eski bir deniz piyadesi olan Jake Sully (Sam Worthington), ölen ikiz kardeşi için hazırlanan bir kapsülün sürücüsü olarak Pandora'da yaşamaya gönüllü olumasını konu edinen film hangisidir?",
+                "a": "A) Geleceğe Dönüş",
+                "b": "B) Avatar",
+                "c": "C) Limit Yok",
+                "d": "D) Açlık Oyunları",
+                "cevap": "B"
+
+            }
+        ];
+        // soruların ekrana getrilebilmesi için kullanılanak olan değişkenlerin ilk tutacakları değerler atanır.
+        var cevap="";var  puan=0;var dogrus=0;var yanliss=0;var soru_numarasi=0;
+        function acilan_soru(s_no) // sorulacak olan sorunun numarasını parametre olarak olan fonksiyon tanımlanır.
+        {  // json formatında çekilen souların, div etiketleri içinde belirtilen id lere erişebilmek için innerHTML kullanılır.
+            document.getElementById("soru").innerHTML =soru_dizisi[s_no].soru;
+            document.getElementById("a_cevap").innerHTML=soru_dizisi[s_no].a;
+            document.getElementById("b_cevap").innerHTML=soru_dizisi[s_no].b;
+            document.getElementById("c_cevap").innerHTML=soru_dizisi[s_no].c;
+            document.getElementById("d_cevap").innerHTML=soru_dizisi[s_no].d;
+            cevap=soru_dizisi[s_no].cevap; 
+            document.getElementById("dogru_sayisi").innerHTML= dogrus;
+            document.getElementById("yanlis_sayisi").innerHTML= yanliss;
+            document.getElementById("puan_sayisi").innerHTML= puan;
+            if(soru_numarasi==soru_dizisi.length){ 
+                // json biçimindeki sorular dizisinin boyutu 10 olduğu için soru numarası 10 olduğu zaman ekrana bilgi vermeli
+                alert("Tüm Soruları Tamamladın..."); // alert() ile kullanıcıya bilgi verilir.
+            }
+        }
+        function cevaplandi(cevap_sikki){ 
+            // bu fonksiyon ile kullanıcının seçimi ile sorunun cevabının aynı olup olmadığı kontrol edilir
+            // eğer kullanıcı yanlış cevap verdiyse skor puanı 10 azaltılır ve yanlış sayısını 1 arttırır.
+            // kullanıcı doğru cevap verdiyse skor puanı 10 arttırılır ve doğru sayısını 1 arttırır.
+            kullanici_secimi=cevap_sikki.getAttribute("data-secim");
+            if(kullanici_secimi!=cevap){ 
+                yanliss++; 
+                puan-=10;
+                // kullanıcıya cevabın yanlış olduğunu bildirmek için alert() fonksiyonu kullanılır.
+                alert("ÜZGÜNÜM YANLIŞ SEÇİM :(");
+                document.getElementById("dogru_sayisi").innerHTML= dogrus;
+                document.getElementById("yanlis_sayisi").innerHTML= yanliss;
+                document.getElementById("puan_sayisi").innerHTML= puan;
+                yeni_soru(); // soru yanlış cevaplansa bile yeni bir sorunun ekrana getirilmesi sağlanır.             
+            }
+            else{
+                puan+=10;
+                dogrus++;
+                // kullanıcıya cevabın doğru olduğunu bildirmek için alert() fonksiyonu kullanılır.
+                alert("Kullanıcı Seçimi: "+ kullanici_secimi +" Şıkkı TEBRİKLER!!!");
+                document.getElementById("dogru_sayisi").innerHTML= dogrus;
+                document.getElementById("yanlis_sayisi").innerHTML= yanliss;
+                document.getElementById("puan_sayisi").innerHTML= puan;
+                yeni_soru();// bir soru cevaplandıktan sonra yeni bir sorunun ekrana getirilmesi sağlanır.
+                
+            }
+        }
+        function yeni_soru(){
+            // soru numarası ilk başta 0 olarak ayarlanır
+            soru_numarasi++; // 0 olarak ayarlanan değişken için sayı 1 artırılır. 
+            acilan_soru(soru_numarasi); // bir sonraki soruya erişebilmek için 
+        }
+    </script>
+</head>
+<body style=" margin: 0px;height: 100%;font-family: 'Times New Roman', Times, serif;background-image: url('arka.jpg'); ">
+    <!-- body bloğu için gerekli olan stil ayarlamaları style="" ile yapılır . -->
+    <!-- body içinde arka plandaki resmin yer alması için background-image: url() style özelliği kullanılır -->
+    <!-- resimlere erişilmek için src,id kullanılır ve resimlerin sayfada değil de canvas içinde bulunması için display: none verildi. -->
+    <img id="sid" src="sid.png" style="display: none;"> 
+    <img id="cingene" src="cingene.jpg" style="display: none;">
+    <!-- canvas oluşturulur uygun stiller verilir -->
+    <canvas id="canvas1" height="300" width="300" style=" border: 7px solid rgb(211, 154, 243);position: absolute;margin-top: 20%;"></canvas>
+    <!-- oyunun başlması için bir buton gereklidir. Butona tıklandığı zaman oyunun kuralları yerine soru ekranı açılır. -->
+    <button id="baslama_butonu" onclick="acilan_soru(0)" ><b><h1>BAŞLA</h1></b></button><br>
+    <!-- film müziklerini dinlemek ve durdurmak için gerekli olan butonlar -->
+    <!-- bu butonlara tıklanıldığı zaman çağırılması gereken fonksiyonlar belirtilmiştir. -->
+    <button  onclick="ses_cal1()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-left:1%;margin-top: 3%;"  ><b>1.Film</b></button>
+    <button onclick="dur1()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);" >1.Durdur</button>
+    <button onclick="ses_cal2()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;" ><b>2.Film</b></button>
+    <button onclick="dur2()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);" >2.Durdur</button>
+    <button onclick="ses_cal3()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;"><b>3.Film</b></button>
+    <button onclick="dur3()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);">3.Durdur</button>
+    <button onclick="ses_cal4()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;"><b>4.Film</b></button>
+    <button onclick="dur4()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);">4.Durdur</button>
+    <button onclick="ses_cal5()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;"><b>5.Film</b></button>
+    <button onclick="dur5()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);">5.Durdur</button><br>
+    <button onclick="ses_cal6()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;margin-left: 1%;margin-bottom: 3%;"><b>6.Film</b></button>
+    <button onclick="dur6()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);">6.Durdur</button>
+    <button onclick="ses_cal7()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;"><b>7.Film</b></button>
+    <button onclick="dur7()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);">7.Durdur</button>
+    <button onclick="ses_cal8()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;"><b>8.Film</b></button>
+    <button onclick="dur8()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);">8.Durdur</button>
+    <button onclick="ses_cal9()" style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;"><b>9.Film</b></button>
+    <button onclick="dur9()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);">9.Durdur</button>
+    <button onclick="ses_cal10()"style="width:5%;height:5%; background-color: rgb(0, 255, 255);margin-top: 0.5%;"><b>10.Film</b></button>
+    <button onclick="dur10()" style="width:5%;height:5%; background-color: rgb(253, 220, 253);">10.Durdur</button>
+    <!-- audio etiketi kullanılarak ses dosyanısna src ile erişilir. -->
+    <!-- her butonun kendine özgün id bulunmaktadır 
+    script kodlarında bu id üzerinden erişim sağlanmaktadır. -->
+    <audio id="harry" src="harry.mp3"></audio>
+    <audio id="titanic" src="titanic.mp3"></audio>
+    <audio id="hababam" src="hababam.mp3"></audio>
+    <audio id="rocky" src="rocky.mp3"></audio>
+    <audio id="pasifik" src="pasifik.mp3"></audio>
+    <audio id="buzdevri" src="buzdevri.mp3"></audio>
+    <audio id="karayip" src="karayip.mp3"></audio>
+    <audio id="nefes" src="nefes.mp3"></audio>
+    <audio id="ayla" src="ayla.mp3"></audio>
+    <audio id="avatar" src="avatar.mp3"></audio>
+       <script>
+        // her film için bir adet film ve durdurma butonu bulunmaktadır.
+        // genel olarak sea_cal() fonksiyonu audio etiketine id ile ulaşıp play() metodu ile ses dinlenir
+           function ses_cal1(){ 
+            var ses=document.getElementById("pasifik");
+            ses.play();
+            // setTimeout() fonksiyonu iki adet parametre almaktadır.Birinci parametresi annonim bir şekilde tanımlanan sesi durdurma fonksiyonu
+            // ikinci parametresi ile kaç milisaniye sonra sesin durdurulacağını belirtir.
+            setTimeout(function() {ses.pause();}, 10000); // 10 saniye sonra ses durdurulur fakat kullanıcı tekrar butona tıklayarak sesi kaldığı yerden dinlemeye devam edebilir.
+           }
+           // 2. film butonu için çalma  fonksiyonları
+           function ses_cal2(){
+            var ses=document.getElementById("buzdevri");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+           }
+           // 3. film butonu için çalma fonksiyonları
+           function ses_cal3(){
+            var ses=document.getElementById("hababam");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+           }
+           // 4. film butonu için çalma fonksiyonları
+           function ses_cal4(){
+            var ses=document.getElementById("rocky");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+           }
+           // 5. film butonu için çalma fonksiyonları
+           function ses_cal5(){
+            var ses=document.getElementById("harry");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+           }
+           // 6. film butonu için çalma  fonksiyonları
+           function ses_cal6(){
+            var ses=document.getElementById("titanic");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+           }
+           // 7. film butonu için çalma fonksiyonları
+           function ses_cal7(){
+            var ses=document.getElementById("karayip");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+
+           }
+           // 8. film butonu için çalma  fonksiyonları
+           function ses_cal8(){
+            var ses=document.getElementById("nefes");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+           }
+           // 9. film butonu için çalma fonksiyonları
+           function ses_cal9(){
+            var ses=document.getElementById("ayla");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+           }
+           // 10. film butonu için çalma fonksiyonları
+           function ses_cal10(){
+            var ses=document.getElementById("avatar");
+            ses.play();
+            setTimeout(function() {ses.pause();}, 10000);
+           }
+        // genel olarak 10 film müziği için sesi kullanıcı istediği zaman durdurması için fonksiyonları tanımlandı.
+        // bu dur() fonksiyonları audio etiketlerinin id niteliğni getElementById ile erişir.
+        function dur1() {
+          var ses= document.getElementById("pasifik");
+          ses.pause(); // pause() metodu ile sesi kullanıcı istediği zaman durdurabilir.
+        }
+        //2. buton için dur () fonksiyonu
+        function dur2() {
+          var ses= document.getElementById("buzdevri");
+          ses.pause();
+        }
+        //3. buton için dur () fonksiyonu
+        function dur3() {
+          var ses= document.getElementById("hababam");
+          ses.pause();
+        }
+        //4. buton için dur () fonksiyonu
+        function dur4() {
+          var ses= document.getElementById("rocky");
+          ses.pause();
+        }
+        //5. buton için dur () fonksiyonu
+        function dur5() {
+          var ses= document.getElementById("harry");
+          ses.pause();
+        }
+        //6. buton için dur () fonksiyonu
+        function dur6() {
+          var ses= document.getElementById("titanic");
+          ses.pause();
+        }
+        //7. buton için dur () fonksiyonu
+        function dur7() {
+          var ses= document.getElementById("karayip");
+          ses.pause();
+        }
+        //8. buton için dur () fonksiyonu
+        function dur8() {
+          var ses= document.getElementById("nefes");
+          ses.pause();
+        }
+        //9. buton için dur () fonksiyonu
+        function dur9() {
+          var ses= document.getElementById("ayla");
+          ses.pause();
+        }
+        //10. buton için dur () fonksiyonu
+        function dur10() {
+          var ses= document.getElementById("avatar");
+          ses.pause();
+        }
+        </script>   
+    <!-- kullanıcının doğru, yanlış cevap sayılarının  ve total puanın gösterilmesi için bir kutuya ihtiyaç vardır.
+    bunun için skor_tuvali ile kapsayıcı bir dıv yapılır. Div için uygun style tanımlamaları yapılır  -->
+    <div id="skor_tuvali" style=" padding: 1%;  margin-top: 5px; width: 20%;top:10%;margin-top: 1.5%;height: 17%;background-color: rgb(211, 154, 243);right: 5px; color: aliceblue;position: absolute;font-size: 1.5em;">
+        <div class="dogru_yanlis_sayisi" style="font-size: medium;text-align: left;width: 50%;float: left;">Doğru Tahmin Sayısı: </div> <div id="dogru_sayisi" style=" text-align: right;width: 40%;float: left;">0</div>
+        <div class="dogru_yanlis_sayisi" style="font-size: medium;text-align: left;width: 50%;float: left;">Yanlış Tahmin Sayısı</div> <div id="yanlis_sayisi" style=" text-align: right;width: 40%;float: left;">0</div>
+        <div id="puan" style=" text-align: center;font-size: 2em;width: 80%;margin: 13px; float: left;">SKOR: <span id="puan_sayisi">0</div></div> 
+    </div>
+    <!-- soru metninin ve şıkların bir arada bulunması gereklidir.
+    bunu yapapilmek için genel bir soru_tuvali isimli div tanımlanır uygun biçimlendirmeler yapılır -->
+    <div id="soru_tuvali" style="margin: auto; width: 50%;height: 50%; padding: 1%;background-color: rgb(253, 220, 253);position: relative;border-radius: 30px; box-shadow: 5px 10px rgb(98, 230, 253);">
+        <div id="soru" style="font-size: 1.2em;margin: auto;margin-top: 1%;margin-bottom: 1%;background-color: aqua;width: 90%;border-radius: 20px;height: 50%;box-shadow: 0px 0px 10px inset rgb(98, 230, 253);text-align: center;padding: 2%;">-KURALLAR-<br>Yukarıda bulunan butonlara tıklayarak 10 saniye boyunca duyduğunuz seslerin hangi filmlere ait oldukarını bulmaya çalışın eğer 10 saniyeden fazla dinlemek isterseniz bir kez daha butona tıklayabilirisiniz ya da daha erken tahmin ettiyseniz durdur butonları ile sesi durdurabilirisiniz. Toplam da 10 adet soru bulunmaktadır. Her soru için uygun olan şıkkı işaretleyin .Sol tarafta bulunan görsel 20 saniye sonra kaldırılacaktır. Dikkatli görseli inceleyiniz. Dikkat başlama butonuna tıklamadan aşağıda bulunan şıklara tıklamayınız aksi takdirde -10 puan ile oyuna başlarsınız.</div>
+        <!-- cevaplar isimli id ile oluşturulan div içinde a,b,c ve d şıklarını kapsar -->
+        <div id="cevaplar" style=" text-align: center;display: grid;grid-template-columns: auto auto;">
+            <!-- data-secim özlleği kullanılarak oyunu oynayan kişinin hangi şıkka tıkladığının verisine ulaşılmasını sağlar  -->
+            <!-- ayrıca cevaplandi(this) fonksiyonu içinde this argümanı ile bu butona tıklanıldı bilgisii verir.
+            html sayfası böylece hangi şıkkın tercih edilidiğini anlar ve buna uygun üst tarafta yer alan script kodların çalışmasını sağlar -->
+            <div id="a_cevap" style="padding: 5px;margin: 5px; background-color: cyan;border-radius: 10px;font-size: 1.1em; line-height: 1em;" data-secim="A" onclick="cevaplandi(this)">A</div>
+            <div id="b_cevap" style="padding: 5px;margin: 5px; background-color: cyan;border-radius: 10px;font-size: 1.1em; line-height: 1em;" data-secim="B" onclick="cevaplandi(this)">B</div>
+            <div id="c_cevap" style="padding: 5px;margin: 5px; background-color: cyan;border-radius: 10px;font-size: 1.1em; line-height: 1em;" data-secim="C" onclick="cevaplandi(this)">C</div>
+            <div id="d_cevap" style="padding: 5px;margin: 5px; background-color: cyan;border-radius: 10px;font-size: 1.1em; line-height: 1em;" data-secim="D" onclick="cevaplandi(this)">D</div>
+        </div>
+    </div>
+</body>
+</html>
