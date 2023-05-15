@@ -1,7 +1,7 @@
 # ozlemarslann.github.io
 ## Game Development Project "FILMSE" <br>
-  HTML, CSS ve Javascript teknolojileri kullanılarak tasarlanan 2D web tabanlı bir oyun projesidir. Filmse oyun projesinin genel amacı beyaz perdeye damga vurmuş film müziklerini 10 saniye boyunca dinlendikten sonra 
-  isimleri tahmin edebilmektir. Kullanıcı (https://ozlemarslann.github.io) oyun linkine tıkladığı
+  Filmse oyun projesi; HTML, CSS ve Javascript teknolojileri kullanılarak tasarlanan 2D web tabanlı bir oyun projesidir.Genel amacı beyaz perdeye damga vurmuş film müziklerini 10 saniye boyunca dinlendikten sonra 
+  isimleri tahmin edebilmelerini sağlamaktır.. Kullanıcı (https://ozlemarslann.github.io) oyun linkine tıkladığı
   takdirde açılan oyun sayfasında ilk olarak oyun kurallarının yer aldığı bir bilgilendirme kutusu, film müziklerini dinlemek için butonlar, skor tablosu ve parça parça bir görsel yer almaktadır.<br/> <br/>
   ![genel](https://github.com/ozlemarslann/ozlemarslann.github.io/assets/110686757/fa43363f-b912-490d-b7ee-1acabc2e6267)
 
