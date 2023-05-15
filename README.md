@@ -7,7 +7,7 @@
 
   <br/>Toplam 10 adet soru bulunmaktadır. Her soru için doğru cevap 10 puan değerindedir. Yanlış cevap ise -10 puan değerindedir. Eğer tüm sorulara doğru cevap verilirse totalde 100 puana ulaşılmış olunur. 
   Oyunun başlatılması için **BAŞLA** butonuna tıklamaları gerekmektedir fakat Başla butonuna tıklamadan önce şıkların bulunduğu butonlara tıklarlarsa oyuna eksi puanlı skorlar ile başlamış olurlar eğer şıklara tıklamadan sadece Başla butonuna tıklarlarsa soruylar sırayla ekrana getirilmektedir. Sorunun cevabı kullanıcı tarafından seçildikten  sonra ekrana bilgilendirme kutusu çıkmaktardır. <br/> 
-  <br/>
+  <br/> ![yanlis](https://github.com/ozlemarslann/ozlemarslann.github.io/assets/110686757/9adea949-b1cf-4d34-b1fb-a534bb600e8a)
   ![cevap](https://github.com/ozlemarslann/ozlemarslann.github.io/assets/110686757/6a4baa1b-2905-4d4e-8110-299532655b21) <br/>
   Yukarıda ki görselde kullanıcının doğru şıkkı seçtiğini bildiren bir bilgilendirme kutusu yer almaktadır bir sonraki soruya geçebilmesi için **Tamam** yazısına tıklması gerekmektedir.
   Birinci ve ikinci sorular için  film müziğinin isminin yanında ekranın sol köşesinde bulunan görseller ile ilgili sorular sorulmaktadır. İlk görsel parçalanmış bir robot resmidir. <br/> 
