@@ -20,4 +20,4 @@ Kullanıcı 10 adet sorunun tamamını doğru cevaplarsa skor tablosu ve bilgile
 ![bitti](https://github.com/ozlemarslann/ozlemarslann.github.io/assets/110686757/566aa32f-26ff-4ced-8d0a-6b8eb2d3673f) 
 ![Ekran görüntüsü 2023-05-15 155152](https://github.com/ozlemarslann/ozlemarslann.github.io/assets/110686757/e8a464c5-0b48-42a9-a7ed-648e18bede1f) <br/><br/> 
 Böylece oyun sona ermiş olmaktadır. Kullanıcı oyunu tekrar oynamak isterse sayfayı yenilemesi gerekmektedir.
-
+Oyun tanıtım videosuna erişmek içi:  https://youtu.be/cuJDtxEduA4 tıklayınız.
